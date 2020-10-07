@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 	<head>
     <meta charset="utf-8" />
 		<title>Orçamento pessoal</title>
@@ -23,15 +23,18 @@
 
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5">
-      <div class="container">
+      <div class="container"> <!-- Inicio primeiro container -->
+        
         <a class="navbar-brand" href="#">
            <img src="logo.png" width="50" height="35" alt="Orçamento pessoal">
         </a>
+        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
               <a class="nav-link" href="index.html">Cadastro</a>
@@ -42,25 +45,26 @@
           </ul>
           
         </div>
-      </div>
+     
+      </div> <!-- Fim primeiro container -->
     </nav>
 
-    <div class="container">
+    <div class="container"> <!-- Inicio segundo container -->
       <div class="row">
         <div class="col mb-5">
           <h1 class="display-4">Registro de nova despesa</h1>
         </div>
       </div>
 
-      <div class="row mb-2">
-        <div class="col-md-2">
+      <div class="row mb-2"> <!-- Inicio primeira row -->
+        <div class="col-md-2"> <!-- Inicio ano -->
           <select class="form-control" id="ano">
             <option value="">Ano</option>
             <option value="2018">2018</option>
           </select>
-        </div>
+        </div>  <!-- Fim ano -->
 
-        <div class="col-md-2">
+        <div class="col-md-2"> <!-- Inicio mes -->
           <select class="form-control" id="mes">
             <option value="">Mês</option>
             <option value="1">Janeiro</option>
@@ -76,13 +80,13 @@
             <option value="11">Novembro</option>
             <option value="12">Dezembro</option>
           </select>
-        </div>
+        </div> <!-- Fim mes -->
         
-        <div class="col-md-2">
+        <div class="col-md-2"> <!-- Inicio dia -->
           <input type="text" class="form-control" placeholder="Dia" id="dia" />
-        </div>
+        </div> <!-- Fim dia -->
 
-        <div class="col-md-6">
+        <div class="col-md-6"> <!-- Inicio tipo -->
           <select class="form-control" id="tipo">
             <option>Tipo</option>
             <option value="1">Alimentação</option>
@@ -91,25 +95,25 @@
             <option value="4">Saúde</option>
             <option value="5">Transporte</option>
           </select>
-        </div>
-      </div>
+        </div> <!-- Fim tipo -->
+      </div> <!-- Fim primeira row -->
 
-      <div class="row">
-        <div class="col-md-8">
+      <div class="row"> <!-- Inicio segunda row -->
+        <div class="col-md-8"> <!-- inicio descrição -->
           <input type="text" class="form-control" placeholder="Descrição" id="descricao" />
-        </div>
+        </div> <!-- Fim descrição -->
 
-        <div class="col-md-2">
+        <div class="col-md-2"> <!-- Inicio valor -->
           <input type="text" class="form-control" placeholder="Valor" id="valor" />
-        </div>
+        </div> <!-- Fim valor -->
 
-        <div class="col-md-2 d-flex justify-content-end">
-          <button type="button" class="btn btn-primary">
+        <div class="col-md-2 d-flex justify-content-end"> <!-- Inicio botão -->
+          <button type="button" class="btn btn-primary" onclick="cadastrarRegistro()">
             <i class="fas fa-plus"></i>
-          </button>
+          </button> <!-- Fim botão -->
         </div>
-      </div>
-    </div>
+      </div> <!-- Fim segunda row -->
+    </div> <!-- Fim segundo container -->
   </body>	
 
 </html>
