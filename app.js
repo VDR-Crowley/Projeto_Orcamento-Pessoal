@@ -1,4 +1,5 @@
 // Contrução do objeto
+
 class Despesa {
 	constructor(ano, mes, dia, tipo, descricao, valor) {
 		this.ano = ano
@@ -70,6 +71,7 @@ class Bd {
 
 let bd = new Bd()
 
+// Construção das funções
 function cadastrarDespesa() {
 
 	let ano = document.getElementById('ano')
@@ -105,10 +107,17 @@ function cadastrarDespesa() {
 		document.getElementById('botaoModal').innerHTML = 'Voltar'
 		document.getElementById('botaoModal').className = 'btn btn-success'
 
-
 		// Dailog de sucesso
 		$('#modalRegistraDespesa').modal('show')
-	
+		
+		// Limpa os campo
+		ano.value = ''
+		mes.value = ''
+		dia.value = ''
+		tipo.value = ''
+		descricao.value = ''
+		valor.value = ''
+
 	} else {
 		
 		// Titulo
@@ -134,5 +143,36 @@ function carregaListaDespesas() {
 	
 	despesas = bd.recuperarListaDespesas()
 
-	console.log(despesas)
+	// Selecionando o elemento tbody da tabela
+	let listaDespesas = document.getElementById('listaDespesas')
+
+	// percorrer o array despesas listando cada despesa de forma dinâmica
+	despesas.forEach(function(d) {
+		console.log(d)
+	  // Criando a linha tr
+	  let linha = listaDespesas.insertRow()
+
+	  // Criar coluna td
+		linha.insertCell(0).innerHTML = `${d.dia}/${d.mes}/${d.ano}`
+		linha.insertCell(1).innerHTML = d.tipo
+
+		// Ajustando tipo
+		switch(parseInt(d.tipo)) {
+			case 1: d.tipo = 'Alimentação'
+				break
+			case 2: d.tipo = 'Educação'
+				break
+			case 3: d.tipo = 'Lazer'
+				break
+			case 4: d.tipo = 'Saúde'
+				break
+			case 5: d.tipo = 'Transporte'
+				break
+		}
+		
+		linha.insertCell(2).innerHTML = d.descricao
+		linha.insertCell(3).innerHTML = d.valor
+
+	})
+
 }
