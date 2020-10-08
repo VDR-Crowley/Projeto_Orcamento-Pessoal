@@ -9,6 +9,15 @@ class Despesa {
 		this.valor = valor
 	}
 
+	validarDados() {
+		for(var i in this) {
+			if (this[i] == undefined || this[i] == '' || this[i] == null) {
+				return false
+			}
+		}
+		return true
+	}
+
 }
 
 class Bd {
@@ -32,6 +41,7 @@ class Bd {
 
 		localStorage.setItem('id', id)
 	}	
+
 }
 
 let bd = new Bd()
@@ -56,6 +66,13 @@ function cadastrarDespesa() {
 		valor.value
 	)
 
-	bd.gravar(despesa)
+	if(despesa.validarDados()) {
+		bd.gravar(despesa)
+		// Dailog de sucesso
+		$('#sucessoGravacao').modal('show')
+	} else {
+		// Dailog de erro
+		$('#erroGravacao').modal('show')
+	}
 
 }
