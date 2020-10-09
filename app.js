@@ -65,6 +65,39 @@ class Bd {
 			despesas.push(despesa)
 		}
 		return despesas
+	}
+
+	pesquisar(despesa) {
+
+		let despesasFiltadas = new Array
+
+		despesasFiltadas = this.recuperarListaDespesas()
+
+		if(despesa.ano != '') {
+			despesasFiltadas = despesasFiltadas.filter(d => d.ano == despesa.ano)
+		}
+
+		if(despesa.mes != '') {
+			despesasFiltadas = despesasFiltadas.filter(d => d.mes == despesa.mes)
+		}
+
+		if(despesa.dia != '') {
+			despesasFiltadas = despesasFiltadas.filter(d => d.dia == despesa.dia)
+		}
+
+		if(despesa.tipo != '') {
+			despesasFiltadas = despesasFiltadas.filter(d => d.tipo == despesa.tipo)
+		}
+
+		if(despesa.descricao != '') {
+			despesasFiltadas = despesasFiltadas.filter(d => d.descricao == despesa.descricao)
+		}
+
+		if(despesa.valor != '') {
+			despesasFiltadas = despesasFiltadas.filter(d => d.valor == despesa.valor)
+		}
+
+		console.log(despesasFiltadas)
 	}	
 
 }
@@ -148,31 +181,43 @@ function carregaListaDespesas() {
 
 	// percorrer o array despesas listando cada despesa de forma dinâmica
 	despesas.forEach(function(d) {
-		console.log(d)
+		//console.log(d)
 	  // Criando a linha tr
 	  let linha = listaDespesas.insertRow()
 
 	  // Criar coluna td
 		linha.insertCell(0).innerHTML = `${d.dia}/${d.mes}/${d.ano}`
-		linha.insertCell(1).innerHTML = d.tipo
 
 		// Ajustando tipo
-		switch(parseInt(d.tipo)) {
-			case 1: d.tipo = 'Alimentação'
+		switch(d.tipo) {
+			case '1': d.tipo = 'Alimentação'
 				break
-			case 2: d.tipo = 'Educação'
+			case '2': d.tipo = 'Educação'
 				break
-			case 3: d.tipo = 'Lazer'
+			case '3': d.tipo = 'Lazer'
 				break
-			case 4: d.tipo = 'Saúde'
+			case '4': d.tipo = 'Saúde'
 				break
-			case 5: d.tipo = 'Transporte'
+			case '5': d.tipo = 'Transporte'
 				break
 		}
-		
+		linha.insertCell(1).innerHTML = d.tipo		
 		linha.insertCell(2).innerHTML = d.descricao
 		linha.insertCell(3).innerHTML = d.valor
 
 	})
 
+}
+
+function pesquisarDespesa() {
+	let ano = document.getElementById('ano').value
+	let mes = document.getElementById('mes').value
+	let dia = document.getElementById('dia').value
+	let tipo = document.getElementById('tipo').value
+	let descricao = document.getElementById('descricao').value
+	let valor = document.getElementById('valor').value
+
+	let despesa = new Despesa(ano, mes, dia, tipo, descricao, valor)
+
+	bd.pesquisar(despesa)
 }
